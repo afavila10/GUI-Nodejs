@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lista de Perfiles</title>
+  <title>Lista de Roles</title>
 
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -39,27 +39,20 @@
     </div>
     <h1 class="title">Home</h1>
     <div class="container mt-5">
-      <h2 class="mb-4">Lista de Perfiles</h2>
+      <h2 class="mb-4">Lista de Roles</h2>
       <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover align-middle text-center">
           <thead class="table-dark">
             <tr>
               <th>ID</th>
-              <th>Nombre</th>
-              <th>Apellido</th>
-              <th>Documento</th>
-              <th>Email</th>
-              <th>Teléfono</th>
-              <th>Foto</th>
-              <th>Dirección</th>
-              <th>Documento Tipo</th>
-              <th>Usuario</th>
+              <th>Nombre del Rol</th>
+              <th>Descripción</th>
               <th>Creado</th>
               <th>Actualizado</th>
-              <th>Acciones   </th>
+              <th>Acciones</th>
             </tr>
           </thead>
-          <tbody id="profileTableBody">
+          <tbody id="roleTableBody">
             <!-- Contenido generado dinámicamente -->
           </tbody>
         </table>
@@ -67,52 +60,24 @@
     </div>
   </div>
 
-  <!-- Modal para editar perfil -->
-  <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+  <!-- Modal para editar rol -->
+  <div class="modal fade" id="editRoleModal" tabindex="-1" aria-labelledby="editRoleModalLabel">
+    <div class="modal-dialog">
       <div class="modal-content">
-        <form id="editProfileForm">
+        <form id="editRoleForm">
           <div class="modal-header">
-            <h5 class="modal-title" id="editProfileModalLabel">Editar Perfil</h5>
+            <h5 class="modal-title" id="editRoleModalLabel">Editar Rol</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
           </div>
-          <div class="modal-body row">
-            <input type="hidden" id="editProfileId">
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="editProfileName" required>
+          <div class="modal-body">
+            <input type="hidden" id="editRoleId">
+            <div class="mb-3">
+              <label for="editRoleName" class="form-label">Nombre del Rol</label>
+              <input type="text" class="form-control" id="editRoleName" required>
             </div>
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Apellido</label>
-              <input type="text" class="form-control" id="editProfileLastName" required>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Documento</label>
-              <input type="text" class="form-control" id="editProfileDocument" required>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Email</label>
-              <input type="email" class="form-control" id="editProfileEmail" required>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Teléfono</label>
-              <input type="text" class="form-control" id="editProfilePhone">
-            </div>
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Dirección</label>
-              <input type="text" class="form-control" id="editProfileAddress">
-            </div>
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Foto</label>
-              <input type="text" class="form-control" id="editProfilePhoto">
-            </div>
-            <div class="col-md-3 mb-3">
-              <label class="form-label">Tipo de Documento</label>
-              <input type="number" class="form-control" id="editProfileDocumentType">
-            </div>
-            <div class="col-md-3 mb-3">
-              <label class="form-label">Usuario</label>
-              <input type="number" class="form-control" id="editProfileUser">
+            <div class="mb-3">
+              <label for="editRoleDescription" class="form-label">Descripción</label>
+              <textarea class="form-control" id="editRoleDescription" rows="3" required></textarea>
             </div>
           </div>
           <div class="modal-footer">
@@ -124,7 +89,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="/src/assets/js/profileTable.js"></script>
+  <script src="/src/assets/js/roleTable.js"></script>
   <script src="/src/assets/js/CerrarSesion.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
