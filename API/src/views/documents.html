@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lista de Usuarios</title>
+  <title>Lista de Documentos</title>
 
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +30,7 @@
     <div class="dropdown" style="position: absolute; top: 10px; right: 20px;">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="profileMenu" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="fas fa-user me-2"></i> Perfil
-      </button>      
+      </button> 
       <ul class="dropdown-menu" aria-labelledby="profileMenu">
         <li><span class="dropdown-item-text" id="loggedInUser">@usuario</span></li>
         <li><hr class="dropdown-divider"></li>
@@ -39,56 +39,45 @@
     </div>
     <h1 class="title">Home</h1>
     <div class="container mt-5">
-      <h2 class="mb-4">Lista de Usuarios</h2>
+      <h2 class="mb-4">Lista de Documentos</h2>
       <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover align-middle text-center">
           <thead class="table-dark">
             <tr>
               <th>ID</th>
-              <th>Usuario</th>
-              <th>Estado</th>
-              <th>Rol</th>
-              <th>Fecha de Creación</th>
+              <th>Nombre del Documento</th>
+              <th>Descripción</th>
+              <th>Creado</th>
+              <th>Actualizado</th>
               <th>Acciones</th>
             </tr>
           </thead>
-          <tbody id="userTableBody">
-            <!-- Carga dinámica desde JS -->
+          <tbody id="documentTableBody">
+            <!-- Contenido generado dinámicamente -->
           </tbody>
         </table>
       </div>
     </div>
   </div>
 
-  <!-- Modal para editar usuario -->
-  <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+  <!-- Modal para editar documento -->
+  <div class="modal fade" id="editDocumentModal" tabindex="-1" aria-labelledby="editDocumentModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <form id="editUserForm">
+        <form id="editDocumentForm">
           <div class="modal-header">
-            <h5 class="modal-title" id="editUserModalLabel">Editar Usuario</h5>
+            <h5 class="modal-title" id="editDocumentModalLabel">Editar Documento</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
           </div>
           <div class="modal-body">
-            <input type="hidden" id="editUserId">
+            <input type="hidden" id="editDocumentId">
             <div class="mb-3">
-              <label for="editUserUsername" class="form-label">Usuario</label>
-              <input type="text" class="form-control" id="editUserUsername" required>
+              <label for="editDocumentName" class="form-label">Nombre del Documento</label>
+              <input type="text" class="form-control" id="editDocumentName" required>
             </div>
             <div class="mb-3">
-              <label for="editUserStatus" class="form-label">Estado</label>
-              <select id="editUserStatus" class="form-control">
-                <option value="1">Activo</option>
-                <option value="3">Inactivo</option>
-              </select>
-            </div>
-            <div class="mb-3">
-              <label for="editUserRole" class="form-label">Rol</label>
-              <select class="form-select" id="editUserRole">
-                <option value="1">Test</option>
-                <option value="3">Cliente</option>
-                <option value="4">Administrador</option>
-              </select>
+              <label for="editDocumentDescription" class="form-label">Descripción</label>
+              <textarea class="form-control" id="editDocumentDescription" rows="3" required></textarea>
             </div>
           </div>
           <div class="modal-footer">
@@ -100,9 +89,8 @@
   </div>
 
   <!-- Scripts -->
-  <script src="/src/assets/js/userTable.js"></script>
+  <script src="/src/assets/js/documentTable.js"></script>
   <script src="/src/assets/js/CerrarSesion.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

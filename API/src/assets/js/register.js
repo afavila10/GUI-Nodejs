@@ -21,7 +21,7 @@ document.getElementById("registerForm").addEventListener("submit", async functio
 
         if (response.ok) {
             // Registro exitoso, redirigir home
-            window.location.href = "index.html";
+            window.location.href = "login.html";
         } else {
             // Mostrar mensaje de error
             errorMsg.textContent = data.error || "Error al registrar usuario";
