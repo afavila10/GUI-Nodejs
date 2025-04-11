@@ -11,7 +11,7 @@ document.getElementById("registerForm").addEventListener("submit", async functio
     console.log("Datos que se enviarán:", { user, password, status, role });
 
     try {
-        const response = await fetch("http://localhost:3000/api_v1/ApiUser", {
+        const response = await fetch("http://localhost:3000/api_v1/apiUser",{
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ user,password,status,role }),

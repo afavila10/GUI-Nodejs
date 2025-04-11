@@ -14,6 +14,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
       const result = await response.json();
       if (result.token) {
         localStorage.setItem("token", result.token);
+        localStorage.setItem('username', data.api_user); // <- Guarda el usuario
         document.getElementById("loginMessage").textContent = "Login exitoso";
         if (response.ok) {
             // Registro exitoso, redirigir home
@@ -29,5 +30,19 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
     } catch (err) {
       document.getElementById("loginMessage").textContent = "Error al iniciar sesión";
     }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const username = localStorage.getItem("username");
+      if (username) {
+        document.getElementById("perfil-usuario").innerText = "@" + username;
+      }
+    });
+  
+    function cerrarSesion() {
+      localStorage.clear();
+      window.location.href = "login.html";
+    }
   });
+
+  
   

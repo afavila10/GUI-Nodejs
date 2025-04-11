@@ -40,6 +40,10 @@
     <h1 class="title">User Status</h1>
     <div class="container mt-5">
       <h2 class="mb-4">Lista de Estados de Usuario</h2>
+      <!-- Botón Crear UserStatus -->
+      <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#createUserStatusModal">
+        <i class="fas fa-user-plus"></i> Crear Estados de Usuario
+      </button>
       <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover align-middle text-center">
           <thead class="table-dark">
@@ -82,6 +86,33 @@
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-success">Guardar cambios</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!--Modal para crear user status-->
+  <div class="modal fade" id="createUserStatusModal" tabindex="-1" aria-labelledby="createUserStatusModalLabel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="createUserStatusForm">
+          <div class="modal-header">
+            <h5 class="modal-title" id="createUserStatusModalLabel">Crear estado de usuario</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="createUserStatus" class="form-label">Nombre del nuevo estado de usuario</label>
+              <input type="text" class="form-control" id="createUserStatus" required>
+            </div>
+            <div class="mb-3">
+              <label for="createDescriptionUserStatus" class="form-label">Descripción </label>
+              <input type="text" class="form-control" id="createDescriptionUserStatus" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Crear userStatus</button>
           </div>
         </form>
       </div>

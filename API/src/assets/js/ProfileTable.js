@@ -117,5 +117,62 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Error en la solicitud DELETE:', error);
       }
     };
-  });
+
+    //Modal
+    document.getElementById("createProfileForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+    
+      const name = document.getElementById("createName").value.trim();
+      const last_name = document.getElementById("createLastName").value.trim();
+      const docNumber = document.getElementById("createDocument").value.trim();
+      const email = document.getElementById("createEmail").value.trim();
+      const phone = document.getElementById("createPhone").value.trim();
+      const photo = document.getElementById("createPhoto").value.trim();
+      const address = document.getElementById("createAddress").value.trim();
+      const document_type = document.getElementById("createDocumentType").value.trim();
+      const user_id = document.getElementById("createUserId").value.trim();
+      
+    
+      // Validación básica
+      if (!name || !docNumber ||!email |!address ||!document_type ||!user_id ) {
+        alert("Por favor, completa todos los campos correctamente.");
+        return;
+      }
+    
+      try {
+        const response = await fetch("http://localhost:3000/api_v1/profile", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ name,
+            last_name, 
+            document: docNumber, 
+            email, 
+            phone, 
+            photo, 
+            address, 
+            document_type, 
+            user_id })
+        });
+    
+        const result = await response.json();
+    
+        if (response.ok) {
+          alert("perfil creado correctamente");
+          document.getElementById("createProfileForm").reset();
+          document.activeElement.blur();
+          const modal = bootstrap.Modal.getInstance(document.getElementById("createProfileModal"));
+          modal.hide();
+          await fetchProfiles(); // Recarga la tabla con los perfiles actualizados
+        } else {
+          alert("Error al crear un perfil: " + result.error);
+        }
+      } catch (error) {
+        alert("Error al conectar con el servidor: " + error.message);
+      }
+    });
+});
+
+
   
