@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const editRoleModal = new bootstrap.Modal(document.getElementById('editRoleModal'));
 
   // Obtener y mostrar los roles
-  async function fetchRoles() {
+   window.fetchRoles = async function() {
     try {
       const res = await fetch('http://localhost:3000/api_v1/role');
       const roles = await res.json();
@@ -94,4 +94,46 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   fetchRoles();
+});
+
+
+//------
+
+document.getElementById("createRoleForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("createRole").value.trim();
+  const description = document.getElementById("createDescription").value.trim();
+
+
+  // Validación básica
+  if (!name || !description ) {
+    alert("Por favor, completa todos los campos correctamente.");
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:3000/api_v1/role", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name, description })
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert("rol creado correctamente");
+      document.getElementById("createRoleForm").reset();
+      document.activeElement.blur();
+      const modal = bootstrap.Modal.getInstance(document.getElementById("createRoleModal"));
+      modal.hide();
+      await fetchRoles(); // Recarga la tabla con los documentpos actualizados
+    } else {
+      alert("Error al crear Rol: " + result.error);
+    }
+  } catch (error) {
+    alert("Error al conectar con el servidor: " + error.message);
+  }
 });

@@ -26,9 +26,7 @@ export const showUserId = async (req, res) => {
     res.status(500).json({ error: "Error fetching user", details: error.message });
   }
 };
- //---------------------------
 
-//----------------------
 export const addUser = async (req, res) => {
   try {
     const { user, password, status, role } = req.body;

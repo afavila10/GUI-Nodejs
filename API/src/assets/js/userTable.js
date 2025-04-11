@@ -130,4 +130,47 @@ document.getElementById("editUserForm").addEventListener("submit", async (e) => 
   }
 });
 
-  
+//Añadir usuario
+
+
+document.getElementById("createUserForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const user = document.getElementById("createUsername").value.trim();
+  const password = document.getElementById("createPassword").value.trim();
+  const status = parseInt(document.getElementById("createUserStatus").value);
+  const role = parseInt(document.getElementById("createUserRole").value);
+
+  // Validación básica
+  if (!user || !password || isNaN(status) || isNaN(role)) {
+    alert("Por favor, completa todos los campos correctamente.");
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:3000/api_v1/user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ user, password, status, role })
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert("Usuario creado correctamente");
+      document.getElementById("createUserForm").reset();
+      const modal = bootstrap.Modal.getInstance(document.getElementById("createUserModal"));
+      modal.hide();
+      await cargarUsuarios(); // Recarga la tabla con los usuarios actualizados
+    } else {
+      alert("Error al crear usuario: " + result.error);
+    }
+  } catch (error) {
+    alert("Error al conectar con el servidor: " + error.message);
+  }
+});
+
+
+

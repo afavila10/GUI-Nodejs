@@ -40,6 +40,10 @@
     <h1 class="title">Home</h1>
     <div class="container mt-5">
       <h2 class="mb-4">Lista de Documentos</h2>
+      <!-- Botón Crear documentos -->
+      <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#createDocumentModal">
+        <i class="fas fa-user-plus"></i> Crear Documentos 
+      </button>
       <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover align-middle text-center">
           <thead class="table-dark">
@@ -61,7 +65,7 @@
   </div>
 
   <!-- Modal para editar documento -->
-  <div class="modal fade" id="editDocumentModal" tabindex="-1" aria-labelledby="editDocumentModalLabel" aria-hidden="true">
+  <div class="modal fade" id="editDocumentModal" tabindex="-1" aria-labelledby="editDocumentModalLabel">
     <div class="modal-dialog">
       <div class="modal-content">
         <form id="editDocumentForm">
@@ -82,6 +86,32 @@
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-success">Guardar cambios</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--Modal para crear Documentos-->
+  <div class="modal fade" id="createDocumentModal" tabindex="-1" aria-labelledby="createDocumentModalLabel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="createDocumentForm">
+          <div class="modal-header">
+            <h5 class="modal-title" id="createDocumentModalLabel">Crear Documento</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="createDocumentType" class="form-label">Nombre del Tipo de documento</label>
+              <input type="text" class="form-control" id="createDocumentType" required>
+            </div>
+            <div class="mb-3">
+              <label for="createDescription" class="form-label">Descripción</label>
+              <input type="text" class="form-control" id="createDescription" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Crear</button>
           </div>
         </form>
       </div>

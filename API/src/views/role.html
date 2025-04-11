@@ -40,6 +40,10 @@
     <h1 class="title">Home</h1>
     <div class="container mt-5">
       <h2 class="mb-4">Lista de Roles</h2>
+      <!-- Botón Crear documentos -->
+      <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#createRoleModal">
+        <i class="fas fa-user-plus"></i> Crear Roles 
+      </button>
       <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover align-middle text-center">
           <thead class="table-dark">
@@ -87,7 +91,32 @@
       </div>
     </div>
   </div>
-
+  <!--Modal para crear Documentos-->
+  <div class="modal fade" id="createRoleModal" tabindex="-1" aria-labelledby="createRoleModalLabel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="createRoleForm">
+          <div class="modal-header">
+            <h5 class="modal-title" id="createRoleModalLabel">Crear Role</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="createRole" class="form-label">Nombre del nuevo Role</label>
+              <input type="text" class="form-control" id="createRole" required>
+            </div>
+            <div class="mb-3">
+              <label for="createDescription" class="form-label">Descripción</label>
+              <input type="text" class="form-control" id="createDescription" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Crear Role</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   <!-- Scripts -->
   <script src="/src/assets/js/roleTable.js"></script>
   <script src="/src/assets/js/CerrarSesion.js"></script>

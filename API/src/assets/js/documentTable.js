@@ -95,4 +95,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
   }
+  //---------
+  document.getElementById("createDocumentForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
   
+    const name = document.getElementById("createDocumentType").value.trim();
+    const description = document.getElementById("createDescription").value.trim();
+
+  
+    // Validación básica
+    if (!name || !description ) {
+      alert("Por favor, completa todos los campos correctamente.");
+      return;
+    }
+  
+    try {
+      const response = await fetch("http://localhost:3000/api_v1/document", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, description})
+      });
+  
+      const result = await response.json();
+  
+      if (response.ok) {
+        alert("Documento creado correctamente");
+        document.getElementById("createDocumentForm").reset();
+        const modal = bootstrap.Modal.getInstance(document.getElementById("createDocumentModal"));
+        modal.hide();
+        await cargarDocumentos(); // Recarga la tabla con los documentpos actualizados
+      } else {
+        alert("Error al crear Documentos: " + result.error);
+      }
+    } catch (error) {
+      alert("Error al conectar con el servidor: " + error.message);
+    }
+  });
